@@ -1,0 +1,20 @@
+pragma solidity ^0.8.7;
+
+contract TestEnum{
+    enum ActionChoices { GoLeft, GoRight, GoStraight, SitStill}
+
+    ActionChoices choice;
+    ActionChoices view defaultChoice = ActionChoices.GoStraight;
+
+    function setGoStraight(){
+        choice = ActionChoices.GoStraight;
+    }
+
+    function getChoice() public view returns (ActionChoices){
+        return choice;
+    }
+
+    function getDefaultChoice() public view returns (uint){
+        retur (uint)defaultChoice;
+    }
+}
