@@ -1,0 +1,30 @@
+pragma solidity ^0.4.7;
+
+contract TsetFunc{
+    function a(uint x) external returns (uint z){
+        return x*x;
+    }
+
+    function b(uint x) external returns (uint z){
+        return 2*x;
+    }
+
+    function select(function (uint) external returns (uint) f,uint x) external returns (uint z){
+        return f(x);
+    }
+
+    function getfun() public view returns ( function (uint) external returns (uint) ){
+        return this.b;
+    }
+
+    function callTest(bool useB,uint x) external returns (uint z){
+        // 变量 f 可以被赋值为 函数a 函数b
+        function (uint) external returns (uint) f;
+        if(useB){
+            f = this.a;
+        } else{
+            f= this.b;
+        }
+        return f(x);
+    }
+}
